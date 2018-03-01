@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import * as categoryActions from '../../actions/categoryActions';
 
 class CategoryPage extends React.Component {
   constructor(props, context) {
@@ -11,7 +12,7 @@ class CategoryPage extends React.Component {
   render() {
     return (
       <div>
-        {this.props.categories.map(category => <span>{ category.name }</span>)}
+        {this.props.categories.map((category, index) => <span key={index}>{ category.name }</span>)}
       </div>
     );
   }
@@ -29,7 +30,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    actions: bindActionCreators(actions, dispatch)
+    actions: bindActionCreators(categoryActions, dispatch)
   };
 }
 
