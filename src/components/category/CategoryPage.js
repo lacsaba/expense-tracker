@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import CategoryTree from './CategoryTree';
 import * as categoryActions from '../../actions/categoryActions';
 
 class CategoryPage extends React.Component {
@@ -10,9 +11,10 @@ class CategoryPage extends React.Component {
   }
 
   render() {
+    const { categories } = this.props;
     return (
       <div>
-        {this.props.categories.map((category, index) => <span key={index}>{ category.name }</span>)}
+        <CategoryTree categories={categories}/>
       </div>
     );
   }
