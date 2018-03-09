@@ -8,25 +8,36 @@ import * as categoryActions from '../../actions/categoryActions';
 class CategoryPage extends React.Component {
   constructor(props, context) {
     super(props, context);
+
+    this.setVisibility = this.setVisibility.bind(this);
+  }
+
+  setVisibility(category) {
+    this.props.actions.toggleVisibility(category);
   }
 
   render() {
-    const { categories } = this.props;
+    const { categories, isVisible } = this.props;
     return (
       <div>
-        <CategoryTree categories={categories}/>
+        <CategoryTree
+          categories={categories}
+          toggleVisibility={this.setVisibility}
+          isVisible={isVisible}/>
       </div>
     );
   }
 }
 
 CategoryPage.propTypes = {
-  categories: PropTypes.arrayOf(Object).isRequired
+  categories: PropTypes.arrayOf(Object).isRequired,
+  isVisible: PropTypes.bool
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    categories: state.categories
+    categories: state.categories,
+    isVisible: state.categories.isVisible
   };
 }
 

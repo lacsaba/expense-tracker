@@ -17,3 +17,5 @@ export function loadCategories() {
     })
   };
 }
+
+export const toggleVisibility = category => ({type: types.TOGGLE_VISIBILITY, category});
