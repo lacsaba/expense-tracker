@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import CategoryTree from './CategoryTree';
-import * as categoryActions from '../../actions/categoryActions';
+import * as categoryActions from '../../store/actions/category';
 
 class CategoryPage extends React.Component {
   constructor(props, context) {

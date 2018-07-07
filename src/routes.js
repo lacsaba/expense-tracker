@@ -1,13 +1,20 @@
 import React from 'react';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
-import App from './components/App';
-import CategoryPage from './components/category/CategoryPage';
+import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
+import App from './containers/App';
 
+const asyncAuth = asyncComponent(() => {
+  return import('./containers/Auth/Auth');
+});
+
+const asyncCategoryPage = asyncComponent(() => {
+  return import('./containers/Category/CategoryPage');
+});
 export default (
   <Router>
-    <div>
+    <Switch>
+      <Route path="/auth" component={asyncAuth}/>
       <Route path="/" component={App}/>
-      <Route exact path="/categories" component={CategoryPage} />
-    </div>
+      <Route exact path="/categories" component={asyncCategoryPage}/>
+    </Switch>
   </Router>
 );
