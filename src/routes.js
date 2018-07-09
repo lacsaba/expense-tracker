@@ -15,8 +15,8 @@ export default (
   <Router>
     <Switch>
       <Route path="/auth" component={asyncAuth}/>
-      <Route path="/" component={App}/>
       <Route exact path="/categories" component={asyncCategoryPage}/>
+      <Route path="/" exact component={App}/>
     </Switch>
   </Router>
 );

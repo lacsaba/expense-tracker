@@ -1,17 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import CategoryTree from './CategoryTree';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import CategoryTree from '../../components/Category/CategoryTree';
 import * as categoryActions from '../../store/actions/category';
 
 class CategoryPage extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-  }
 
   render() {
-    const { categories } = this.props;
+    const {categories} = this.props;
     return (
       <div>
         <CategoryTree categories={categories}/>
@@ -30,7 +27,7 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(categoryActions, dispatch)
   };
